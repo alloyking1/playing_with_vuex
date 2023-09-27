@@ -1,37 +1,28 @@
 <template>
   <div>
-    <div class="counter">
-      <h2 :style="{color:$store.state.textColor}">{{ $store.state.counter }}</h2>
-    </div>
-    <div class="square">
-      {{ $store.state.counter }}
-      <sup>{{ $store.state.counter }}</sup>
-      = {{ $store.getters.counterSquare }}
-    </div>
+    <Counter/>
+    <Square/>
+    
     <div class="btn">
       <button @click="$store.dispatch('increaseCounter')" class="btn">+</button>
       <button @click="$store.dispatch('decreaseCounter')" class="btn">-</button>
     </div>
-    <div class="textFiled">
-      <input type="text" v-model="colorCode"/>
-    </div>
   </div> 
-
+  <Textcolor/>
   <!-- <RouterView /> -->
 </template>
 
 <script>
+import Counter from './components/Counter.vue';
+import Square from './components/Square.vue';
+import Textcolor from './components/Textcolor.vue';
+
 export default{
   name:'App',
-  computed:{
-    colorCode:{
-      get(val){
-        return this.$store.state.textColor
-      },
-      set(newValue) {
-        this.$store.dispatch('setTextColorAction',newValue)
-      }
-    }
+  components:{
+    Counter,
+    Square,
+    Textcolor
   }
 }
 </script>
