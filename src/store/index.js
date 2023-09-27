@@ -3,7 +3,8 @@ import axios from "axios";
 
 const store = createStore({
     state: {
-        counter:0
+        counter:0,
+        textColor:'yellow'
     },
 
     mutations:{
@@ -12,6 +13,9 @@ const store = createStore({
           },
           decreaseCounter(state, res){
             state.counter -= res
+          },
+          setTextColorMutation(state, value){
+            state.textColor = value
           }
     },
 
@@ -29,6 +33,10 @@ const store = createStore({
             .then(res => {
                 commit('decreaseCounter',res.data)
             })
+          },
+
+          setTextColorAction({commit}, value){
+            commit('setTextColorMutation', value)
           }
     },
 

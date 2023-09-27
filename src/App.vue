@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="counter">
-      <h2>{{ $store.state.counter }}</h2>
+      <h2 :style="{color:$store.state.textColor}">{{ $store.state.counter }}</h2>
     </div>
     <div class="square">
       {{ $store.state.counter }}
@@ -12,6 +12,9 @@
       <button @click="$store.dispatch('increaseCounter')" class="btn">+</button>
       <button @click="$store.dispatch('decreaseCounter')" class="btn">-</button>
     </div>
+    <div class="textFiled">
+      <input type="text" v-model="colorCode"/>
+    </div>
   </div> 
 
   <!-- <RouterView /> -->
@@ -20,6 +23,16 @@
 <script>
 export default{
   name:'App',
+  computed:{
+    colorCode:{
+      get(val){
+        return this.$store.state.textColor
+      },
+      set(newValue) {
+        this.$store.dispatch('setTextColorAction',newValue)
+      }
+    }
+  }
 }
 </script>
 
