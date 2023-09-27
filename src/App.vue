@@ -3,6 +3,11 @@
     <div class="counter">
       <h2>{{ $store.state.counter }}</h2>
     </div>
+    <div class="square">
+      {{ $store.state.counter }}
+      <sup>{{ $store.state.counter }}</sup>
+      = {{ $store.getters.counterSquare }}
+    </div>
     <div class="btn">
       <button @click="$store.dispatch('increaseCounter')" class="btn">+</button>
       <button @click="$store.dispatch('decreaseCounter')" class="btn">-</button>
